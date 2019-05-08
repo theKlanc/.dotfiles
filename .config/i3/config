@@ -287,6 +287,9 @@ exec "sleep 10 && copyq &"
 bindsym $mod+Escape exec "/home/klanc/.scripts/lock.sh"
 bindsym $mod+Shift+Escape exec "/home/klanc/.scripts/lock.sh & ( sleep 3 && xset dpms force suspend & )"
 
+# Hibernate
+bindsym $mod+Shift+End exec "/home/klanc/.scripts/hibernate"
+
 # Flameshot screenshot tool
 bindsym --release Print exec "flameshot gui &"
 

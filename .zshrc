@@ -60,7 +60,7 @@ unset LD_PRELOAD
 
 if [ ! -f /tmp/bonsai ] 
 then
-    bonsai -g "40,30" -T | ~/bonsaifix.sh | tr ! \\ 2> /dev/null > /tmp/bonsai
+    bonsai -g "40,30" -T | ~/.scripts/bonsaifix.sh | tr ! \\ 2> /dev/null > /tmp/bonsai
 fi
-#neofetch --ascii "$(bonsai -g "40,30" -T | ~/bonsaifix.sh | tr ! \\ 2> /dev/null)" --ascii_colors 172 130 150 108 247
-neofetch --ascii "$(echo /tmp/bonsai)" --ascii_colors 172 130 150 108 247
+
+neofetch --ascii "$(cat /tmp/bonsai)" --ascii_colors 172 130 150 108 247

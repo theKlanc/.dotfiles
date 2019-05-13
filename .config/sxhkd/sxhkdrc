@@ -16,7 +16,7 @@ super + shift + q
 	bspc node -c
 
 # alternate between the tiled and monocle layout
-super + f
+super + g
 	bspc desktop -l next
 
 #
@@ -27,8 +27,20 @@ super + f
 super + Return
 	urxvt
 
+super + shift + Return
+	bspwm-sensible-app
+
 super + e
 	urxvt -e ranger
+
+Print
+	flameshot gui
+
+super + {_,shift +} Escape
+	/home/klanc/.scripts/lock.sh { ,& ( sleep 3 && xset dpms force suspend & )}
+
+super + {o,p}
+	~/.scripts/gamemode{End,Start}.sh &
 
 #
 # focus/swap
@@ -42,7 +54,15 @@ super + {_,shift + }{Left,Down,Up,Right}
 
 # focus/move the given desktop
 super + {_,shift +} {1,2,3,4,5,6,7,8,9,0,F1,F7}
-	bspc {desktop -f ,node -d } {"","","","","","","","","","","",""}
+	accio={"anar","enviar"} ;\
+	desktop={"","","","","","","","","","","",""} ;\
+	caracter="" ;\
+	if [ "$accio" = "enviar" ]; then;bspc node -d $desktop;	caracter="";else;bspc desktop -f $desktop; fi ;\
+	notify-send -t 300 $caracter $desktop
+
+@Super_L
+	desktop=$(bspc query -D -d focused --names);\
+	notify-send -t 1000 $desktop
 
 #
 # multi-monitor hotkeys
@@ -59,3 +79,4 @@ super + alt + Right
 	bspc desktop -m next; \
 	bspc monitor -f next; \
 	bspc desktop -f $desk
+

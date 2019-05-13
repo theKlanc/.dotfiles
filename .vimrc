@@ -16,6 +16,8 @@ source ~/.vim_runtime/my_configs.vim
 catch
 endtry
 
+hi NonText ctermbg=none 
+hi Normal guibg=NONE ctermbg=NONE
 filetype plugin on
 
 
@@ -25,5 +27,6 @@ Plug 'https://github.com/suan/vim-instant-markdown.git'
 Plug 'https://github.com/vim-latex/vim-latex.git'
 Plug 'lervag/vimtex'
 Plug 'kazimuth/dwarffortress.vim'
+Plug 'kovetskiy/sxhkd-vim'
 
 call plug#end()

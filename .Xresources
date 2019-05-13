@@ -79,7 +79,8 @@
 
 URxvt.scrollBar: false
 !!URxvt*font: xft:lemon:size=15:antialias=false:style=regular, xft:Font\ Awesome\ 5\ Free\ Regular:size=12, xft:Font\ Awesome\ 5\ Free\ Solid:size=12, xft:Font\ Awesome\ 5\ Brands:size=12
-URxvt*font: -*-tewi-medium-*-*--*-*-*-*-*-*-*-*, xft:Font\ Awesome\ 5\ Free\ Regular:size=12, xft:Font\ Awesome\ 5\ Free\ Solid:size=12, xft:Font\ Awesome\ 5\ Brands:size=12
+URxvt*font: -*-tewi-medium-*-*--*-*-*-*-*-*-*-*, xft:Font\ Awesome\ 5\ Free\ Regular:size=14, xft:Font\ Awesome\ 5\ Free\ Solid:size=14, xft:Font\ Awesome\ 5\ Brands:size=14
+!!URxvt*font: \ lucy\ tewi, xft:Font\ Awesome\ 5\ Free\ Regular:size=12, xft:Font\ Awesome\ 5\ Free\ Solid:size=12, xft:Font\ Awesome\ 5\ Brands:size=12
 !!URxvt*font: -*-tewii-medium-*-*--22-*-*-*-*-*-*-*, xft:Font\ Awesome\ 5\ Free\ Regular:size=12, xft:Font\ Awesome\ 5\ Free\ Solid:size=12, xft:Font\ Awesome\ 5\ Brands:size=12
 !!URxvt*font: xft:lemon:size=15:antialias=false:style=regular, xft:Font\ Awesome\ 5\ Free\ Regular:size=5, xft:Font\ Awesome\ 5\ Free\ Solid:size=5, xft:Font\ Awesome\ 5\ Brands:size=5
 !!URxvt*font: xft:lemon:size=15:antialias=false:style=regular, xft:Font\ Awesome\ 5\ Free\ Regular, xft:Font\ Awesome\ 5\ Free\ Solid, xft:Font\ Awesome\ 5\ Brands

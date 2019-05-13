@@ -31,77 +31,31 @@ super + e
 	urxvt -e ranger
 
 #
-# state/flags
-#
-
-# set the window state
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-
-# set the node flags
-super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
-
-#
 # focus/swap
 #
 
-# focus the node in the given direction
+# focus/move the node in the given direction
 super + {_,shift + }{j,k,l,ntilde}
 	bspc node -{f,s} {west,south,north,east}
+super + {_,shift + }{Left,Down,Up,Right}
+	bspc node -{f,s} {west,south,north,east}
 
-# focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
-
-# focus the given desktop
+# focus/move the given desktop
 super + {_,shift +} {1,2,3,4,5,6,7,8,9,0,F1,F7}
 	bspc {desktop -f ,node -d } {"","","","","","","","","","","",""}
-
-# send the focused window to the given desktop
-#super + shift + {1,2,3,4,5,6,7,8,9,0,F1,F7}
-#	bspc node -d {"","","","","","","","","","",""}
-#super + {1,2,3,4,5,6,7,8,9,0,F1,F7}
-#	bspc desktop -f {"","","","","","","","","","",""}
-
-#
-# preselect
-#
-
-# preselect the direction
-super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
-
-# preselect the ratio
-super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
-
-# cancel the preselection for the focused node
-super + ctrl + space
-	bspc node -p cancel
-
-# cancel the preselection for the focused desktop
-super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-
-#
-# move/resize
-#
-
-# expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-
-# contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 #
 # multi-monitor hotkeys
 #
 
-super + alt + bracket{left,right}
-  desk=`bspc query -D -d focused`; \
-  bspc desktop -m {prev,next}; \
-  bspc monitor -f {prev,next}; \
-  bspc desktop -f $desk
+super + alt + Left
+	desk=`bspc query -D -d focused`; \
+	bspc desktop -m prev; \
+	bspc monitor -f prev; \
+	bspc desktop -f $desk
+
+super + alt + Right
+	desk=`bspc query -D -d focused`; \
+	bspc desktop -m next; \
+	bspc monitor -f next; \
+	bspc desktop -f $desk

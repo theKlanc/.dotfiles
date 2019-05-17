@@ -5,3 +5,4 @@ export MAKEFLAGS="-j$(nproc)"
 export EDITOR=vim
 export DEVKITA64="$DEVKITPRO/devkitA64"
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
+export _JAVA_AWT_WM_NONREPARENTING=1

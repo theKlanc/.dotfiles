@@ -100,3 +100,4 @@ URxvt.cursorBlink: 1
 URxvt.boldMode:
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.internalBorder: 0

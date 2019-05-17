@@ -16,12 +16,24 @@ super + shift + q
 	bspc node -c
 
 # alternate between the tiled and monocle layout
-super + g
+super + f
 	bspc desktop -l next
+
+super + g
+	bspc node --state \~fullscreen
 
 #
 # program shortcuts
 #
+
+super + d
+	PATH=/home/klanc/.scripts/:$PATH rofi -show run
+
+super + s
+	PATH=/home/klanc/.scripts/:$PATH rofi -show ssh
+
+super + Tab
+	PATH=/home/klanc/.scripts/:$PATH rofi -show window
 
 # open a terminal
 super + Return
@@ -60,7 +72,7 @@ super + {_,shift +} {1,2,3,4,5,6,7,8,9,0,F1,F7}
 	if [ "$accio" = "enviar" ]; then;bspc node -d $desktop;	caracter="";else;bspc desktop -f $desktop; fi ;\
 	notify-send -t 300 $caracter $desktop
 
-@Super_L
+@Super_R
 	desktop=$(bspc query -D -d focused --names);\
 	notify-send -t 1000 $desktop
 

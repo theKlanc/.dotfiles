@@ -14,3 +14,6 @@ alias meow="cat"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias e='exa -lih --group-directories-first'
 alias xevkb="xev -event keyboard"
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -I"

@@ -17,7 +17,6 @@ bindsym $mod+e exec "i3-env i3-sensible-terminal -e ranger"
 bindsym Scroll_Lock exec "i3-env i3-sensible-terminal"
 #Close window
 bindsym $mod+Shift+q kill
-
 bindsym $mod+w exec layoutToggle.sh
 
 # Change focus
@@ -64,8 +63,8 @@ bindsym $mod+Shift+space floating toggle
 # Change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# Focus the parent container
-bindsym $mod+a focus parent
+# Rofimoji
+bindsym $mod+a exec "rofimoji"
 
 set $workspace1 ""
 set $workspace2 ""
@@ -206,6 +205,9 @@ gaps outer 5
 #smart_gaps on
 
 # App-workspace associations
+#AddedByScript
+assign [class="jetbrains-idea"] ""
+#End
 # assign [class="Chromium"] $workspace1
 assign [class="jetbrains-clion"] $workspace5
 assign [class="Filezilla"] $workspace4
@@ -287,8 +289,8 @@ exec "sleep 10 && copyq &"
 bindsym $mod+Escape exec "/home/klanc/.scripts/lock.sh"
 bindsym $mod+Shift+Escape exec "/home/klanc/.scripts/lock.sh & ( sleep 3 && xset dpms force suspend & )"
 
-# Hibernate
-bindsym $mod+Shift+End exec "/home/klanc/.scripts/hibernate"
+# Suspend
+bindsym $mod+Shift+End exec "/home/klanc/.scripts/suspend"
 
 # Flameshot screenshot tool
 bindsym --release Print exec "flameshot gui &"
@@ -339,3 +341,27 @@ exec --no-startup-id "/home/klanc/.scripts/udev/silentWacom.sh &"
 
 # UpdateAlarm
 exec --no-startup-id "/home/klanc/.scripts/updateAlarm.sh &"
+
+# Push Z5 to Switch
+bindsym $mod+less exec "~/pushSwitch.sh"
+
+# Flashfocus
+exec_always --no-startup-id flashfocus
+#bindsym --release Super_L exec --no-startup-id flash_window
+bindsym --release Super_R exec --no-startup-id flash_window
+
+#qtpass
+exec_always --no-startup-id qtpass
+
+#i3 Alternating layouts
+exec_always --no-startup-id /usr/bin/alternating_layouts.py &
+
+#X
+bindsym Control+Mod1+BackSpace exec i3-msg exit
+bindsym --release Control+Mod1+Escape exec xkill &
+
+#Lock app to workspace
+bindsym $Mod+Shift+ccedilla exec ~/.scripts/lockToWorkspace.fish
+
+#Kalu pacman notifiy daemon
+exec_always --no-startup-id kalu &

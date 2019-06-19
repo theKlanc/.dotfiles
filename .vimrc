@@ -1,3 +1,5 @@
+syntax enable
+filetype plugin indent on
 set runtimepath+=~/.vim_runtime
 
 source ~/.vim_runtime/vimrcs/basic.vim
@@ -28,5 +30,6 @@ Plug 'https://github.com/vim-latex/vim-latex.git'
 Plug 'lervag/vimtex'
 Plug 'kazimuth/dwarffortress.vim'
 Plug 'kovetskiy/sxhkd-vim'
+Plug 'dag/vim-fish'
 
 call plug#end()

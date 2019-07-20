@@ -11,10 +11,10 @@ focus_follows_mouse no
 mouse_warping none
 
 # Open new terminal
-bindsym $mod+Return exec "i3-env i3-sensible-terminal"
+bindsym $mod+Return exec "i3-env alacritty"
 bindsym $mod+Shift+Return exec "i3-env i3-sensible-app"
-bindsym $mod+e exec "i3-env i3-sensible-terminal -e ranger"
-bindsym Scroll_Lock exec "i3-env i3-sensible-terminal"
+bindsym $mod+e exec "i3-env alacritty -e ranger"
+bindsym Scroll_Lock exec "i3-env alacritty"
 #Close window
 bindsym $mod+Shift+q kill
 bindsym $mod+w exec layoutToggle.sh
@@ -63,9 +63,11 @@ bindsym $mod+Shift+space floating toggle
 # Change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# Rofimoji
-bindsym $mod+a exec "rofimoji"
+# Rofi Emojis
+bindsym $mod+a exec --no-startup-id "rofi -show emoji -modi emoji"
 
+
+# Workspaces
 set $workspace1 ""
 set $workspace2 ""
 set $workspace3 ""
@@ -74,7 +76,7 @@ set $workspace5 ""
 set $workspace6 ""
 set $workspace7 ""
 set $workspace8 ""
-set $workspace9 ""
+set $workspace9 ""
 set $workspace10 ""
 set $workspaceF1 ""
 set $workspaceF7 ""
@@ -208,7 +210,6 @@ gaps outer 5
 #AddedByScript
 assign [class="jetbrains-idea"] ""
 #End
-# assign [class="Chromium"] $workspace1
 assign [class="jetbrains-clion"] $workspace5
 assign [class="Filezilla"] $workspace4
 assign [class="TelegramDesktop"] $workspace9
@@ -233,7 +234,7 @@ workspace $workspace8 output $monitor_right
 
 # Keyboard layout
 exec "setxkbmap es"
-
+exec "setxkbmap -option caps:super"
 # Disable borders
 for_window [class="^.*"] border pixel 0
 
@@ -272,15 +273,16 @@ bindsym $mod+s exec "PATH=/home/klanc/.scripts/:$PATH rofi -show ssh"
 # Apply a background different than the one used by wal
 # If this isn't needed, remove it and remove -n flag from the above 
 exec_always --no-startup-id "feh --bg-scale --no-xinerama /usr/share/pixmaps/wallpaper.png"
-exec_always "~/.config/polybar/launch.sh &"
+exec_always --no-startup-id "~/.config/polybar/launch.sh"
 
-exec "chromium --profile-directory='Default' &"
+exec --no-startup-id "chromium --profile-directory='Default'"
 #exec "firefox &"
-exec "telegram-desktop &"
-exec "steam &"
-exec "redshift-gtk &"
+exec --no-startup-id "telegram-desktop"
+exec --no-startup-id "whatsapp-nativifier"
+exec --no-startup-id "steam"
+exec --no-startup-id "redshift-gtk"
 #exec "ckb-next -b &"
-exec "sleep 10 && copyq &"
+exec --no-startup-id "sleep 10 && copyq"
 
 # Automatically change to urgent windows, WIP
 #for_window [urgent="latest"] focus
@@ -289,6 +291,8 @@ exec "sleep 10 && copyq &"
 bindsym $mod+Escape exec "/home/klanc/.scripts/lock.sh"
 bindsym $mod+Shift+Escape exec "/home/klanc/.scripts/lock.sh & ( sleep 3 && xset dpms force suspend & )"
 
+# clearine
+bindsym $mod+End exec clearine
 # Suspend
 bindsym $mod+Shift+End exec "/home/klanc/.scripts/suspend"
 
@@ -325,8 +329,9 @@ exec --no-startup-id "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &"
 exec --no-startup-id "blueman-applet"
 
 # OC GPU
-#exec --no-startup-id "nvidia-settings -a '[gpu:0]/GPUMemoryTransferRateOffset[3]=700'"
-#exec --no-startup-id "nvidia-settings -a '[gpu:0]/GPUGraphicsClockOffset[3]=80'"
+exec --no-startup-id "nvidia-settings -a '[gpu:0]/GPUMemoryTransferRateOffset[3]=500'"
+exec --no-startup-id "nvidia-settings -a '[gpu:0]/GPUGraphicsClockOffset[3]=50'"
+exec --no-startup-id "nvidia-settings -a [gpu:0]/GpuPowerMizerMode=1"
 
 # Scratchpad bindings
 
@@ -354,14 +359,14 @@ bindsym --release Super_R exec --no-startup-id flash_window
 exec_always --no-startup-id qtpass
 
 #i3 Alternating layouts
-exec_always --no-startup-id /usr/bin/alternating_layouts.py &
+#exec_always --no-startup-id /usr/bin/alternating_layouts.py &
 
 #X
 bindsym Control+Mod1+BackSpace exec i3-msg exit
 bindsym --release Control+Mod1+Escape exec xkill &
-
+bindsym Control+Shift+Escape exec gnome-system-monitor
 #Lock app to workspace
 bindsym $Mod+Shift+ccedilla exec ~/.scripts/lockToWorkspace.fish
 
 #Kalu pacman notifiy daemon
-exec_always --no-startup-id kalu &
+exec --no-startup-id kalu &

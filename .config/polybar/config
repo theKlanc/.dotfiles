@@ -12,15 +12,16 @@
     orange	=	#cb4b16
     green	=	#859900
     yellow	=	#fba922
-    bg  =		#e8e8e8 
-    fg  =               #7b7b7b
+    fg  =		#eaeaea 
+    bg  =               #303030
 [settings]
     #compositing-background = over
     #compositing-foreground = xor
+    i3-pad = 2
 [bar/barLeft]
     monitor = ${env:MONITOR:DVI-I-1}
     width = 100%
-    height = 30
+    height = 25
 
 
     ; Color de fons de la barra ARGB
@@ -30,23 +31,21 @@
 
     line-size = 0
     
-    border-size =15 
+    border-size =10 
     border-bottom-size = 0
 
     spacing = 0
 
     padding-left = 0
-    padding-right = 1
-    module-margin-left = 5
-    module-margin-right = 5
+    padding-right =1 
+    module-margin-left = 1
+    module-margin-right = 1
 
-    font-0 = Lemon:size=12;1
-    
     ; font-0 = \ lucy\ tewi:scale=2;1
+    font-0 = Noto Sans:size=10:antialias=true:style=Regular;2
     font-1 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Solid;2
     font-2 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Regular;2
     font-3 = Font\ Awesome\ 5\ Free:size=10:antialias=true:style=Solid;2
-    font-4 = Noto Sans:size=10:antialias=true:style=Solid;2
     modules-left = i3
     modules-center = date
     modules-right = pomodoro 
@@ -60,7 +59,7 @@
     monitor = ${env:MONITOR:HDMI-0}
     
     width = 100%
-    height = 30
+    height = 25
 
 
     ; Color de fons de la barra ARGB
@@ -70,7 +69,7 @@
 
     line-size = 0
 
-    border-size =15
+    border-size =10
     border-bottom-size = 0
 
     spacing = 0
@@ -80,7 +79,7 @@
     module-margin-left = 1
     module-margin-right = 1
 
-    font-0 = Lemon:size=12;1
+    font-0 = Noto Sans:size=10:antialias=true:style=Regular;2
     font-1 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Solid;2
     font-2 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Regular;2
     font-3 = Font\ Awesome\ 5\ Free:size=10:antialias=true:style=Solid;2
@@ -172,7 +171,7 @@
     ;   %mode%
     ; Default: %mode%
     label-mode = %mode%
-    label-mode-padding = 0
+    label-mode-padding = ${settings.i3-pad}
     label-mode-background = ${colors.red}
 
     ; Available tokens:
@@ -182,9 +181,9 @@
     ;   %output%
     ; Default: %icon%  %name%
     label-focused = %name%
-    label-focused-foreground = ${colors.lightest-grey}
+    label-focused-foreground = ${colors.black}
     label-focused-background = ${colors.blue}
-    label-focused-padding = 1
+    label-focused-padding = ${settings.i3-pad}
 
     ; Available tokens:
     ;   %name%
@@ -193,9 +192,9 @@
     ;   %output%
     ; Default: %icon%  %name%
     label-unfocused = %name%
-    label-unfocused-padding = 1
-    label-unfocused-foreground = ${colors.darkest-grey}
-    label-unfocused-background = ${colors.light-grey}
+    label-unfocused-padding = ${settings.i3-pad}
+    label-unfocused-foreground = ${colors.light-grey}
+    label-unfocused-background = ${colors.darkest-grey}
     ; Available tokens:
     ;   %name%
     ;   %icon%
@@ -204,8 +203,8 @@
     ; Default: %icon%  %name%
     label-visible = %name%
     label-visible-background = ${colors.light-blue}
-    label-visible-foreground = ${colors.white}
-    label-visible-padding = 1
+    label-visible-foreground = ${colors.black}
+    label-visible-padding = ${settings.i3-pad}
 
     ; Available tokens:
     ;   %name%
@@ -216,11 +215,11 @@
     label-urgent = %name%
     label-urgent-foreground = ${colors.darkest-grey}
     label-urgent-background = ${colors.yellow}
-    label-urgent-padding = 1
+    label-urgent-padding = ${settings.i3-pad}
 
     ; Separator in between workspaces 
-    label-separator-padding = 0 
-    label-separator-foreground = #ffffff
+    label-separator-padding = 3   
+    label-separator-foreground = #bbbbbb
 
 [module/cpu]
     type = internal/cpu
@@ -255,7 +254,7 @@
 
 [module/date]
     type = internal/date
-    date = %%{F#787e82}%A, %d %B %Y  %%{F#787e82}%H:%M%%{F#787e82}:%%{F#fba922}%S%%{F-}
+    date = %%{F#eaeaea}%A, %d %B %Y  %%{F#eaeaea}%H:%M%%{F#787e82}:%%{F#fbde22}%S%%{F-}
 
 [module/memory]
     type = internal/memory
@@ -337,7 +336,7 @@
     ; Available tokens:
     ;   %percentage% (default)
     label-muted = 🔇 muted
-    label-muted-foreground = #66
+    label-muted-foreground = #cc
 
     ; Only applies if <ramp-volume> is used
     ramp-volume-0 = 🔈

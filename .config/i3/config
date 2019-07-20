@@ -203,7 +203,7 @@ bindsym $mod+Mod1+Left move workspace to output left
 
 # i3-gaps settings
 gaps inner 10 
-gaps outer 5
+gaps outer 0 
 #smart_gaps on
 
 # App-workspace associations
@@ -271,8 +271,7 @@ bindsym $mod+s exec "PATH=/home/klanc/.scripts/:$PATH rofi -show ssh"
 #bindsym $mod+d exec "albert toggle"
 
 # Apply a background different than the one used by wal
-# If this isn't needed, remove it and remove -n flag from the above 
-exec_always --no-startup-id "feh --bg-scale --no-xinerama /usr/share/pixmaps/wallpaper.png"
+exec_always --no-startup-id "feh --bg-scale --no-xinerama /home/klanc/Pictures/wallpaper.png"
 exec_always --no-startup-id "~/.config/polybar/launch.sh"
 
 exec --no-startup-id "chromium --profile-directory='Default'"

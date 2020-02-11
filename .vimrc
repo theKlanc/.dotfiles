@@ -31,5 +31,6 @@ Plug 'lervag/vimtex'
 Plug 'kazimuth/dwarffortress.vim'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'dag/vim-fish'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()

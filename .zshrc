@@ -8,6 +8,7 @@ plugins=(
   git
   sudo
   ssh-agent
+  zsh-autosuggestions
 )
 
 function hex2string () {
@@ -42,6 +43,10 @@ function ranger-cd {
     rm -f -- "$tempfile"
 }
 
+function x {
+    7z x $1 -o${1%.*}
+}
+
 source $ZSH/oh-my-zsh.sh
 export SSH_KEY_PATH="~/.ssh/id_rsa"
 source ~/.aliases
@@ -60,7 +65,7 @@ unset LD_PRELOAD
 
 if [ ! -f /tmp/bonsai ] 
 then
-    bonsai -g "40,30" -T | ~/.scripts/bonsaifix.sh | tr ! \\ 2> /dev/null > /tmp/bonsai
+    bonsai -g "40,20" -n > /tmp/bonsai
 fi
 
-neofetch --ascii "$(cat /tmp/bonsai)" --ascii_colors 172 130 150 108 247
+neofetch --ascii /tmp/bonsai --ascii_colors 172 130 150 108 247

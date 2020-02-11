@@ -208,6 +208,8 @@ gaps outer 0
 
 # App-workspace associations
 #AddedByScript
+assign [class="Steam"] ""
+assign [class="QtCreator"] ""
 assign [class="jetbrains-idea"] ""
 #End
 assign [class="jetbrains-clion"] $workspace5
@@ -215,7 +217,6 @@ assign [class="Filezilla"] $workspace4
 assign [class="TelegramDesktop"] $workspace9
 assign [class="TeamSpeak 3"] $workspace9
 assign [class="ts3client_linux_amd64"] $workspace9
-assign [class="Steam"] $workspace7
 # assign [class="mpv"] $workspace8
 assign [class="ckb"] $workspace10
 assign [class="Virt-manager"] $workspaceF1
@@ -225,12 +226,14 @@ assign [title=".*YouTube.*"] $workspace8
 
 # Workspace-monitor associations
 set $monitor_right "HDMI-0"
-set $monitor_left "DVI-I-1"
+set $monitor_left "DP-0"
 
 workspace $workspace8 output $monitor_right
 
 # Set steam login popup to floating
+for_window [class="Z5"] floating enable
 # WIPPPPPP for_window [class="Nautilus" instance="file_progress"] floating enable
+for_window [class="jetbrains-idea" title="win0"] floating enable;
 
 # Keyboard layout
 exec "setxkbmap es"
@@ -238,9 +241,9 @@ exec "setxkbmap -option caps:super"
 # Disable borders
 for_window [class="^.*"] border pixel 0
 
-# Run compton
-exec --no-startup-id "compton --config /home/klanc/.compton.conf -b"
-## Compton binds
+# Run picom
+exec --no-startup-id "picom --config /home/klanc/.config/.picom.conf -b"
+## Picom binds
 bindsym $mod+o exec "~/.scripts/gamemodeEnd.sh &"
 bindsym $mod+p exec "~/.scripts/gamemodeStart.sh &"
 # Power management
@@ -302,7 +305,7 @@ bindsym --release Print exec "flameshot gui &"
 exec --no-startup-id "ssh-agent -s &"
 
 # Start udiskie, to automount usb drives et al
-exec --no-startup-id "udiskie -t2 &"
+exec --no-startup-id "udiskie --tray &"
 
 # Start playWithMpv
 exec --no-startup-id "play-with-mpv &"
@@ -344,7 +347,7 @@ bindsym $mod+minus scratchpad show
 exec --no-startup-id "/home/klanc/.scripts/udev/silentWacom.sh &"
 
 # UpdateAlarm
-exec --no-startup-id "/home/klanc/.scripts/updateAlarm.sh &"
+#exec --no-startup-id "/home/klanc/.scripts/updateAlarm.sh &"
 
 # Push Z5 to Switch
 bindsym $mod+less exec "~/pushSwitch.sh"
@@ -363,9 +366,15 @@ exec_always --no-startup-id qtpass
 #X
 bindsym Control+Mod1+BackSpace exec i3-msg exit
 bindsym --release Control+Mod1+Escape exec xkill &
+bindsym $mod+Mod1+Control+Escape exec pkill xkill &
 bindsym Control+Shift+Escape exec gnome-system-monitor
 #Lock app to workspace
 bindsym $Mod+Shift+ccedilla exec ~/.scripts/lockToWorkspace.fish
 
 #Kalu pacman notifiy daemon
 exec --no-startup-id kalu &
+
+exec --no-startup-id qbittorrent &
+
+# Quiet mode
+bindsym $mod+x exec /home/klanc/.config/i3/i3wm-focus.sh

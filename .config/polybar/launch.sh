@@ -1,0 +1,1 @@
+/home/klanc/.scripts/polybarLaunch.sh

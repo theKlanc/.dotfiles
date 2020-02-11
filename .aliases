@@ -4,7 +4,7 @@ alias uefi='systemctl reboot --firmware-setup'
 alias holdmybeer='sudo'
 alias mpv='mpv --input-ipc-server=/tmp/mpvsocket --hwdec=audo-copy'
 alias ncdu='sudo ncdu --exclude /mnt'
-alias nautilus='nautilus `pwd`'
+alias nautilus='nautilus \`pwd\`'
 alias tm='trash'
 alias ranger='ranger-cd'
 alias fd='fd -E /mnt'
@@ -19,3 +19,5 @@ alias mv="mv -i"
 alias rm="rm -I"
 alias c="calc"
 alias dd="dd status=progress"
+alias wp="feh --bg-scale --no-xinerama"
+alias yaynews='yay -Pw'

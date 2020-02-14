@@ -61,8 +61,8 @@ bindsym $mod+t layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # Change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
+#bindsym $mod+space focus mode_toggle
+bindsym $mod+space exec --no-startup-id "pkill flashBG.sh && ~/.scripts/setWallpaper.sh"
 # Rofi Emojis
 bindsym $mod+a exec --no-startup-id "rofi -show emoji -modi emoji"
 
@@ -242,7 +242,7 @@ exec "setxkbmap -option caps:super"
 for_window [class="^.*"] border pixel 0
 
 # Run picom
-exec --no-startup-id "picom --config /home/klanc/.config/.picom.conf -b"
+exec --no-startup-id "picom --config ~/.config/.picom.conf -b"
 ## Picom binds
 bindsym $mod+o exec "~/.scripts/gamemodeEnd.sh &"
 bindsym $mod+p exec "~/.scripts/gamemodeStart.sh &"
@@ -265,16 +265,16 @@ bindsym $mod+p exec "~/.scripts/gamemodeStart.sh &"
 #bindsym $mod+Pause mode "$mode_system"
 
 # Open rofi (run, window and ssh)
-bindsym $mod+d exec "PATH=/home/klanc/.scripts/:$PATH rofi -show run"
-bindsym $mod+Tab exec "PATH=/home/klanc/.scripts/:$PATH rofi -show window"
-bindsym $mod+s exec "PATH=/home/klanc/.scripts/:$PATH rofi -show ssh"
+bindsym $mod+d exec "PATH=~/.scripts/:$PATH rofi -show run"
+bindsym $mod+Tab exec "PATH=~/.scripts/:$PATH rofi -show window"
+bindsym $mod+s exec "PATH=~/.scripts/:$PATH rofi -show ssh"
 
 #Open Albert
 #exec_always --no-startup-id "albert"
 #bindsym $mod+d exec "albert toggle"
 
 # Apply a background different than the one used by wal
-exec_always --no-startup-id "feh --bg-scale --no-xinerama /home/klanc/Pictures/wallpaper.png"
+exec_always --no-startup-id "~/.scripts/setWallpaper.sh"
 exec_always --no-startup-id "~/.config/polybar/launch.sh"
 
 exec --no-startup-id "chromium --profile-directory='Default'"
@@ -290,13 +290,13 @@ exec --no-startup-id "sleep 10 && copyq"
 #for_window [urgent="latest"] focus
 
 # i3Lock (betterlockscreen)
-bindsym $mod+Escape exec "/home/klanc/.scripts/lock.sh"
-bindsym $mod+Shift+Escape exec "/home/klanc/.scripts/lock.sh & ( sleep 3 && xset dpms force suspend & )"
+bindsym $mod+Escape exec "~/.scripts/lock.sh"
+bindsym $mod+Shift+Escape exec "~/.scripts/lock.sh & ( sleep 3 && xset dpms force suspend & )"
 
 # clearine
 bindsym $mod+End exec clearine
 # Suspend
-bindsym $mod+Shift+End exec "/home/klanc/.scripts/suspend"
+bindsym $mod+Shift+End exec "~/.scripts/suspend"
 
 # Flameshot screenshot tool
 bindsym --release Print exec "flameshot gui &"
@@ -344,10 +344,10 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Wacom
-exec --no-startup-id "/home/klanc/.scripts/udev/silentWacom.sh &"
+exec --no-startup-id "~/.scripts/udev/silentWacom.sh &"
 
 # UpdateAlarm
-#exec --no-startup-id "/home/klanc/.scripts/updateAlarm.sh &"
+#exec --no-startup-id "~/.scripts/updateAlarm.sh &"
 
 # Push Z5 to Switch
 bindsym $mod+less exec "~/pushSwitch.sh"
@@ -377,4 +377,4 @@ exec --no-startup-id kalu &
 exec --no-startup-id qbittorrent &
 
 # Quiet mode
-bindsym $mod+x exec /home/klanc/.config/i3/i3wm-focus.sh
+bindsym $mod+x exec ~/.config/i3/i3wm-focus.sh

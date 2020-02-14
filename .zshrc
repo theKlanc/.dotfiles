@@ -1,5 +1,5 @@
 # The best is yet to come
-export ZSH="/home/klanc/.oh-my-zsh"
+export ZSH="/usr/share/oh-my-zsh"
 ZSH_THEME="miloshadzic"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
@@ -63,9 +63,41 @@ bindkey "^H" backward-delete-word
 bindkey "^[[3^" delete-word
 unset LD_PRELOAD
 
+#HOOKS
+alertExclusions="vim ssh"
+preexec(){
+	echo $1 > /tmp/zshPids/$$/lastCommand
+	date +%s > /tmp/zshPids/$$/lastTime
+}
+precmd(){
+	last="$(cat /tmp/zshPids/$$/lastTime)"
+	if [ $last -eq "0" ]; then
+		return
+	fi
+	commandName="$(cat /tmp/zshPids/$$/lastCommand)"
+	command="$(echo $commandName | cut -d' ' -f1)"
+	if [[ $alertExclusions =~ (^|[[:space:]])"$command"($|[[:space:]]) ]] ; then
+	       return	
+  	fi
+	timeNow="$(date +%s)"
+	(( dif = $timeNow - $last ))
+	if (( dif > 5 ));then
+		notify-send "finished command" "$commandName"
+
+	fi
+	if (( dif > 20 )); then
+		(~/.scripts/flashBG.sh & )
+	fi
+	echo "0" > /tmp/zshPids/$$/lastTime
+}
+
+
 if [ ! -f /tmp/bonsai ] 
 then
     bonsai -g "40,20" -n > /tmp/bonsai
 fi
 
 neofetch --ascii /tmp/bonsai --ascii_colors 172 130 150 108 247
+mkdir -p /tmp/zshPids/$$
+echo "zsh" > /tmp/zshPids/$$/lastCommand
+date +%s > /tmp/zshPids/$$/lastTime

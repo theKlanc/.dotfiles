@@ -208,6 +208,7 @@ gaps outer 0
 
 # App-workspace associations
 #AddedByScript
+assign [class="org.remmina.Remmina"] ""
 assign [class="Steam"] ""
 assign [class="QtCreator"] ""
 assign [class="jetbrains-idea"] ""
@@ -378,3 +379,14 @@ exec --no-startup-id qbittorrent &
 
 # Quiet mode
 bindsym $mod+x exec /home/klanc/.config/i3/i3wm-focus.sh
+
+#davmail for outlook on thunderbird
+exec --no-startup-id davmail &
+exec_always --no-startup-id thunderbird &
+
+#SVP4 + prismatik
+exec --no-startup-id SVPManager &
+exec --no-startup-id prismatik &
+
+#kmix
+exec --no-stratup-id kmix &

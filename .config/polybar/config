@@ -91,7 +91,7 @@
 
     modules-left = i3 system-nvidia-smi
     modules-center = date
-    modules-right = pulseaudio wired-network cpu memory
+    modules-right = wired-network cpu memory
 
 [bar/barTele]
     width = 100%

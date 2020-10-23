@@ -1,4 +1,4 @@
-alias i3conf='nvim ~/.config/i3/config'
+alias i3conf='vim ~/.config/i3/config'
 alias l='exa -lihaag --group-directories-first'
 alias uefi='systemctl reboot --firmware-setup'
 alias holdmybeer='sudo'
@@ -21,3 +21,6 @@ alias c="calc"
 alias dd="dd status=progress"
 alias wp="feh --bg-scale --no-xinerama"
 alias yaynews='yay -Pw'
+alias qbittorrent='QT_SCALE_FACTOR_ROUNDING_POLICY=Round qbittorrent'
+alias tmview='find . -maxdepth 1 -iregex ".*\.\(jpeg\|gif\|png\|jpg\)" -printf "%f\n"| xargs -L 1 -i bash -c "tmv {} ; exit 0"'
+alias tmvslideshow='find . -maxdepth 1 -iregex ".*\.\(jpeg\|gif\|png\|jpg\)" -printf "%f\n"| sort -R | xargs -L 1 -i bash -c "tmv {} && sleep 3 ; exit 0"'

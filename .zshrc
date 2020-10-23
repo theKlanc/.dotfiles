@@ -1,4 +1,5 @@
 # The best is yet to come
+export ZSH="/usr/share/oh-my-zsh"
 export ZSH="/home/klanc/.oh-my-zsh"
 ZSH_THEME="miloshadzic"
 ENABLE_CORRECTION="true"
@@ -7,7 +8,7 @@ HIST_STAMPS="yyyy/mm/dd"
 plugins=(
   git
   sudo
-  ssh-agent
+  #ssh-agent
   zsh-autosuggestions
 )
 
@@ -49,6 +50,7 @@ function x {
 
 source $ZSH/oh-my-zsh.sh
 export SSH_KEY_PATH="~/.ssh/id_rsa"
+source ~/.profile
 source ~/.aliases
 export SYSTEMD_EDITOR="/usr/bin/vim"
 export INPUTRC=~/.inputrc
@@ -63,9 +65,41 @@ bindkey "^H" backward-delete-word
 bindkey "^[[3^" delete-word
 unset LD_PRELOAD
 
+#HOOKS
+alertExclusions="vim ssh"
+preexec(){
+  return
+	echo $1 > /tmp/zshPids/$$/lastCommand
+	date +%s > /tmp/zshPids/$$/lastTime
+}
+precmd(){
+  return
+	last="$(cat /tmp/zshPids/$$/lastTime)"
+	if [ $last -eq "0" ]; then
+		return
+	fi
+	commandName="$(cat /tmp/zshPids/$$/lastCommand)"
+	command="$(echo $commandName | cut -d' ' -f1)"
+	if [[ $alertExclusions =~ (^|[[:space:]])"$command"($|[[:space:]]) ]] ; then
+	       return	
+  	fi
+	timeNow="$(date +%s)"
+	(( dif = $timeNow - $last ))
+	if (( dif > 5 ));then
+		notify-send "finished command" "$commandName"
+
+	fi
+	echo "0" > /tmp/zshPids/$$/lastTime
+}
+
+
 if [ ! -f /tmp/bonsai ] 
 then
-    bonsai -g "40,20" -n > /tmp/bonsai
+    bonsai.sh -g "40,20" -n > /tmp/bonsai
 fi
 
-neofetch --ascii /tmp/bonsai --ascii_colors 172 130 150 108 247
+neofetch
+#neofetch --ascii /tmp/bonsai --ascii_colors 172 130 150 108 247
+mkdir -p /tmp/zshPids/$$
+echo "zsh" > /tmp/zshPids/$$/lastCommand
+date +%s > /tmp/zshPids/$$/lastTime

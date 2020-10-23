@@ -19,7 +19,7 @@
     #compositing-foreground = xor
     i3-pad = 2
 [bar/barLeft]
-    monitor = ${env:MONITOR:DP-0}
+    monitor = ${env:MONITOR}
     width = 100%
     height = 25
 
@@ -51,15 +51,48 @@
 
     modules-left = i3
     modules-center = date
-    modules-right = pomodoro 
 
+[bar/barCenter]
+    monitor = ${env:MONITOR}
+    width = 100%
+    height = 25
+
+    enable-ipc = true
+
+    ; Color de fons de la barra ARGB
+    background = ${colors.bg}
+    ; Color de les lletres dels elements ARGB
+    foreground = ${colors.fg}
+
+    line-size = 0
+    
+    border-size =10 
+    border-bottom-size = 0
+
+    spacing = 0
+
+    padding-left = 0
+    padding-right =1 
+    module-margin-left = 1
+    module-margin-right = 1
+
+    ; font-0 = \ lucy\ tewi:scale=2;1
+    font-0 = Noto Sans:size=10:antialias=true:style=Regular;2
+    font-1 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Solid;2
+    font-2 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Regular;2
+    font-3 = Font\ Awesome\ 5\ Free:size=10:antialias=true:style=Solid;2
+    font-4 = Lemon:size=12;1
+
+    modules-left = i3
+    modules-center = date
+    modules-right = pomodoro
 
     tray-position= right
     tray-transparent = false
     tray-background = ${colors.darkest-grey}
 
 [bar/barRight]
-    monitor = ${env:MONITOR:HDMI-0}
+    monitor = ${env:MONITOR}
     
     width = 100%
     height = 25
@@ -125,8 +158,6 @@
 
     modules-left = i3
     modules-center = date
-    modules-right = pomodoro 
-
 
     tray-position= right
     tray-transparent = false
@@ -318,8 +349,7 @@
 
     label-connected =    %{T3}%local_ip%%{T-}
     label-disconnected-foreground = #787e82
-    ni
-
+    
 [module/pulseaudio]
     type = internal/pulseaudio
 
@@ -408,5 +438,26 @@ exec = python ~/.local/share/i3-pomodoro/pomodoro.py
 click-left = python ~/.local/share/i3-pomodoro/pomodoro.py left
 click-right = python ~/.local/share/i3-pomodoro/pomodoro.py right
 interval=1
+
+[module/easteregg-fakku]
+type = custom/script
+exec = echo " FAKKU! "
+interval = 3600
+click-left = launchChromium2.sh https://fakku.net/hentai/random
+label-font = "Noto Sans:size=10:antialias=true:style=Bold"
+format = <label>
+
+format-overline = #AB2328
+format-underline = #AB2328
+format-foreground = #FFFFFF
+format-background = #AB2328
+
+[module/polywins]
+type = custom/script
+exec = ~/.config/polybar/scripts/polywins.sh
+format = <label>
+label = %output%
+label-padding = 1
+interval = .25
 
 ; vim:ft=dosini

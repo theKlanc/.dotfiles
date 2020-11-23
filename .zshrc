@@ -103,3 +103,5 @@ neofetch
 mkdir -p /tmp/zshPids/$$
 echo "zsh" > /tmp/zshPids/$$/lastCommand
 date +%s > /tmp/zshPids/$$/lastTime
+cat /proc/mdstat
+eval "$(starship init zsh)"

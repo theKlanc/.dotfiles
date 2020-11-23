@@ -233,9 +233,9 @@ bindsym $mod+Mod1+Right move workspace to output right
 bindsym $mod+Mod1+Left move workspace to output left
 
 # i3-gaps settings
-gaps inner 10 
+gaps inner 0 
 gaps outer 0 
-#smart_gaps on
+smart_gaps on
 
 # App-workspace associations
 #AddedByScript
@@ -278,7 +278,7 @@ exec "setxkbmap -option caps:super"
 for_window [class="^.*"] border pixel 0
 
 # Run picom
-exec --no-startup-id "picom --config ~/.config/.picom.conf --experimental-backends -b"
+#exec --no-startup-id "picom --config ~/.config/.picom.conf --experimental-backends -b"
 ## Picom binds
 bindsym $mod+o exec "~/.scripts/gamemodeEnd.sh &"
 bindsym $mod+p exec "~/.scripts/gamemodeStart.sh &"
@@ -416,7 +416,7 @@ exec --no-startup-id "QT_SCALE_FACTOR_ROUNDING_POLICY=Round qbittorrent &"
 bindsym $mod+x exec /home/klanc/.config/i3/i3wm-focus.sh
 
 #davmail for outlook on thunderbird
-exec --no-startup-id sleep 5 && davmail &
+#exec --no-startup-id sleep 5 && davmail &
 exec_always --no-startup-id thunderbird &
 
 #SVP4 + prismatik

@@ -313,7 +313,7 @@ bindsym $mod+s exec "PATH=~/.scripts/:$PATH rofi -show ssh"
 exec_always --no-startup-id "~/.scripts/setWallpaper.sh"
 exec_always --no-startup-id "~/.config/polybar/launch.sh"
 
-exec --no-startup-id "chromium --profile-directory='Default' --disable-gpu-vsync"
+exec --no-startup-id "google-chrome-stable --profile-directory='Default'"
 #exec --no-startup-id "firefox"
 exec --no-startup-id "telegram-desktop"
 exec --no-startup-id "whatsapp-nativifier"
@@ -434,4 +434,5 @@ exec mpv /usr/share/sounds/WinLH_WindowsLogon.wav
 #rotate display
 bindsym $mod+i exec /home/klanc/.scripts/rotateMonitor.sh
 
-exec --no-startup-id "/usr/lib/xfce4/notifyd/xfce4-notifyd"
+exec --no-startup-id "/usr/lib/xfce4/notifyd/xfce4-notifyd &"
+exec --no-startup-id "play-with-mpv &"

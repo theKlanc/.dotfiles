@@ -85,7 +85,7 @@
 
     modules-left = i3
     modules-center = date
-    modules-right = pomodoro
+;    modules-right = pomodoro
 
     tray-position= right
     tray-transparent = false
@@ -268,28 +268,28 @@
     label = CPU
    
     ramp-coreload-0 = ▁
-    ramp-coreload-0-font = 0
+    ramp-coreload-0-font = 4
     ramp-coreload-0-foreground = #aaff77
     ramp-coreload-1 = ▂
-    ramp-coreload-1-font = 0
+    ramp-coreload-1-font = 4
     ramp-coreload-1-foreground = #aaff77
     ramp-coreload-2 = ▃
-    ramp-coreload-2-font = 0
+    ramp-coreload-2-font = 4
     ramp-coreload-2-foreground = #aaff77
     ramp-coreload-3 = ▄
-    ramp-coreload-3-font = 0
+    ramp-coreload-3-font = 4
     ramp-coreload-3-foreground = #aaff77
     ramp-coreload-4 = ▅
-    ramp-coreload-4-font = 0
+    ramp-coreload-4-font = 4
     ramp-coreload-4-foreground = #fba922
     ramp-coreload-5 = ▆
-    ramp-coreload-5-font = 0
+    ramp-coreload-5-font = 4
     ramp-coreload-5-foreground = #fba922
     ramp-coreload-6 = ▇
-    ramp-coreload-6-font = 0
+    ramp-coreload-6-font = 4
     ramp-coreload-6-foreground = #ff5555
     ramp-coreload-7 = █
-    ramp-coreload-7-font = 0
+    ramp-coreload-7-font = 4
     ramp-coreload-7-foreground = #ff5555
 
 [module/date]

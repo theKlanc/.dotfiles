@@ -9,3 +9,5 @@ export DEVKITA64="$DEVKITPRO/devkitA64"
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 export _JAVA_AWT_WM_NONREPARENTING=1
 export XDG_DATA_HOME=$HOME/.local/share
+
+export QSYS_ROOTDIR="/home/klanc/.cache/yay/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/20.1/quartus/sopc_builder/bin"

@@ -104,4 +104,7 @@ mkdir -p /tmp/zshPids/$$
 echo "zsh" > /tmp/zshPids/$$/lastCommand
 date +%s > /tmp/zshPids/$$/lastTime
 cat /proc/mdstat
+s(){
+  /usr/bin/ssh -t "$@" "tmux a -t $USER || tmux new -s $USER";
+}
 eval "$(starship init zsh)"

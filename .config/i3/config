@@ -20,6 +20,10 @@ bindsym Scroll_Lock exec "i3-env alacritty"
 bindsym $mod+Shift+q kill
 bindsym $mod+w exec layoutToggle.sh
 
+# Switch between workspaces in same output
+bindsym $mod+Tab workspace next_on_output
+bindsym $mod+Shift+Tab workspace prev_on_output
+
 # Change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -302,7 +306,7 @@ bindsym $mod+p exec "~/.scripts/gamemodeStart.sh &"
 
 # Open rofi (run, window and ssh)
 bindsym $mod+d exec "PATH=~/.scripts/:$PATH rofi -show run"
-bindsym $mod+Tab exec "PATH=~/.scripts/:$PATH rofi -show window"
+bindsym $mod+Mod1+Tab exec "PATH=~/.scripts/:$PATH rofi -show window"
 bindsym $mod+s exec "PATH=~/.scripts/:$PATH rofi -show ssh"
 
 #Open Albert
@@ -433,6 +437,9 @@ exec mpv /usr/share/sounds/WinLH_WindowsLogon.wav
 
 #rotate display
 bindsym $mod+i exec /home/klanc/.scripts/rotateMonitor.sh
+#work mode
+bindsym $mod+u exec /home/klanc/.scripts/setWork.sh
 
 exec --no-startup-id "/usr/lib/xfce4/notifyd/xfce4-notifyd &"
 exec --no-startup-id "play-with-mpv &"
+exec --no-startup-id "barriers -c ~/Documents/workConfig.sgc &"

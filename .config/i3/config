@@ -6,6 +6,7 @@ font pango:NotoSans-Regular, pango:Noto Sans CJK JP, pango:Font Awesome 5 Free, 
 floating_modifier $mod
 
 exec "export TERMINAL=alacritty"
+exec "export QT_AUTO_SCREEN_SCALE_FACTOR=0"
 
 # Set focus follows mouse to false
 focus_follows_mouse no
@@ -73,7 +74,7 @@ bindsym $mod+a exec --no-startup-id "rofi -show emoji -modi emoji"
 
 
 # Workspaces
-set $workspace1 ""
+set $workspace1 ""
 set $workspace2 ""
 set $workspace3 ""
 set $workspace4 ""
@@ -227,7 +228,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down
 bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute
 
 # Media player controls
-#bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPlay exec playerctl play-pause
 #bindsym XF86AudioNext exec playerctl next
 #bindsym XF86AudioPrev exec playerctl previous
 #bindsym XF86AudioStop exec playerctl stop
@@ -259,7 +260,6 @@ assign [class="ckb"] $workspaceF12
 assign [class="Virt-manager"] $workspaceF1
 assign [class="streamlink-twitch-gui"] $workspace8
 # assign [class="Firefox Developer Edition"] $workspaceF7
-assign [title=".*YouTube.*"] $workspace8
 assign [class="Thunderbird"] $workspace10
 assign [class="Pulseeffects"] $workspaceF12
 
@@ -274,6 +274,7 @@ for_window [class="Z5"] floating enable
 #for_window [class="lemonbar"] floating enable
 # WIPPPPPP for_window [class="Nautilus" instance="file_progress"] floating enable
 for_window [class="jetbrains-idea" title="win0"] floating enable;
+for_window [title=".*YouTube.*"] $workspace8
 
 # Keyboard layout
 exec "setxkbmap es"
@@ -315,10 +316,9 @@ bindsym $mod+s exec "PATH=~/.scripts/:$PATH rofi -show ssh"
 
 # Apply a background different than the one used by wal
 exec_always --no-startup-id "~/.scripts/setWallpaper.sh"
-exec_always --no-startup-id "~/.config/polybar/launch.sh"
+exec_always --no-startup-id "~/.config/polybar/start.sh"
 
-exec --no-startup-id "google-chrome-stable --profile-directory='Default'"
-#exec --no-startup-id "firefox"
+exec --no-startup-id "firefox"
 exec --no-startup-id "telegram-desktop"
 exec --no-startup-id "whatsapp-nativifier"
 exec --no-startup-id "steam"
@@ -438,8 +438,8 @@ exec mpv /usr/share/sounds/WinLH_WindowsLogon.wav
 #rotate display
 bindsym $mod+i exec /home/klanc/.scripts/rotateMonitor.sh
 #work mode
-bindsym $mod+u exec /home/klanc/.scripts/setWork.sh
+bindsym $mod+u exec /home/klanc/.scripts/toggleWork.sh
 
 exec --no-startup-id "/usr/lib/xfce4/notifyd/xfce4-notifyd &"
 exec --no-startup-id "play-with-mpv &"
-exec --no-startup-id "barriers -c ~/Documents/workConfig.sgc &"
+exec --no-startup-id "cd /opt/deej && /opt/deej/deej &"

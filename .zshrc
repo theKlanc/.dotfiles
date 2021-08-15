@@ -98,13 +98,14 @@ then
     bonsai.sh -g "40,20" -n > /tmp/bonsai
 fi
 
-neofetch
+uwufetch
 #neofetch --ascii /tmp/bonsai --ascii_colors 172 130 150 108 247
 mkdir -p /tmp/zshPids/$$
 echo "zsh" > /tmp/zshPids/$$/lastCommand
 date +%s > /tmp/zshPids/$$/lastTime
-cat /proc/mdstat
+#cat /proc/mdstat
 s(){
   /usr/bin/ssh -t "$@" "tmux a -t $USER || tmux new -s $USER";
 }
 eval "$(starship init zsh)"
+source /etc/profile.d/devkit-env.sh

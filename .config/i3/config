@@ -8,6 +8,8 @@ floating_modifier $mod
 exec "export TERMINAL=alacritty"
 exec "export QT_AUTO_SCREEN_SCALE_FACTOR=0"
 
+exec "/home/klanc/.screenlayout/horizontal.sh"
+
 # Set focus follows mouse to false
 focus_follows_mouse no
 mouse_warping none
@@ -53,7 +55,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+b split h 
 
 # Split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+n split v
 
 # Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -74,7 +76,7 @@ bindsym $mod+a exec --no-startup-id "rofi -show emoji -modi emoji"
 
 
 # Workspaces
-set $workspace1 ""
+set $workspace1 ""
 set $workspace2 ""
 set $workspace3 ""
 set $workspace4 ""
@@ -264,8 +266,10 @@ assign [class="Thunderbird"] $workspace10
 assign [class="Pulseeffects"] $workspaceF12
 
 # Workspace-monitor associations
-set $monitor_right "HDMI-0"
-set $monitor_left "DP-0"
+set $monitor_right "DP-0"
+set $monitor_center "DP-2"
+set $monitor_left "HDMI-0"
+
 
 workspace $workspace8 output $monitor_right
 
@@ -317,11 +321,11 @@ bindsym $mod+s exec "PATH=~/.scripts/:$PATH rofi -show ssh"
 # Apply a background different than the one used by wal
 exec_always --no-startup-id "~/.scripts/setWallpaper.sh"
 exec_always --no-startup-id "~/.config/polybar/start.sh"
+#exec_always --no-startup-id "~/.config/polybar/launchtemp.sh"
 
-exec --no-startup-id "firefox"
 exec --no-startup-id "telegram-desktop"
 exec --no-startup-id "whatsapp-nativifier"
-exec --no-startup-id "steam"
+exec --no-startup-id "steam-runtime"
 exec --no-startup-id "redshift-gtk"
 #exec "ckb-next -b &"
 exec --no-startup-id "sleep 10 && copyq"
@@ -412,9 +416,9 @@ bindsym Control+Shift+Escape exec gnome-system-monitor
 bindsym $Mod+Shift+ccedilla exec ~/.scripts/lockToWorkspace.fish
 
 #Kalu pacman notifiy daemon
-exec --no-startup-id kalu &
+#exec --no-startup-id kalu &
 
-exec --no-startup-id "QT_SCALE_FACTOR_ROUNDING_POLICY=Round qbittorrent &"
+exec --no-startup-id "QT_SCALE_FACTOR_ROUNDING_POLICY=Round sleep 5 && qbittorrent &"
 
 # Quiet mode
 bindsym $mod+x exec /home/klanc/.config/i3/i3wm-focus.sh
@@ -438,7 +442,12 @@ exec mpv /usr/share/sounds/WinLH_WindowsLogon.wav
 #rotate display
 bindsym $mod+i exec /home/klanc/.scripts/rotateMonitor.sh
 #work mode
-bindsym $mod+u exec /home/klanc/.scripts/toggleWork.sh
+#bindsym $mod+u exec /home/klanc/.scripts/toggleWork.sh
+
+#greenclip
+bindsym $mod+v exec rofi-copyq
+
+bindsym Control+Shift+Insert exec --no-startup-id "bash -c 'killall xdotool || while xdotool click --repeat 10 --delay 1 1; do :; done'"
 
 exec --no-startup-id "/usr/lib/xfce4/notifyd/xfce4-notifyd &"
 exec --no-startup-id "play-with-mpv &"

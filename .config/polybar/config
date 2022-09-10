@@ -44,9 +44,9 @@
 
     ; font-0 = \ lucy\ tewi:scale=2;1
     font-0 = Noto Sans:size=10:antialias=true:style=Regular;2
-    font-1 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Solid;2
-    font-2 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Regular;2
-    font-3 = Font\ Awesome\ 5\ Free:size=10:antialias=true:style=Solid;2
+    font-1 = Font\ Awesome\ 6\ Brands:size=10:antialias=true:style=Solid;2
+    font-2 = Font\ Awesome\ 6\ Brands:size=10:antialias=true:style=Regular;2
+    font-3 = Font\ Awesome\ 6\ Free:size=10:antialias=true:style=Solid;2
     font-4 = Lemon:size=12;1
 
     modules-left = i3
@@ -78,9 +78,9 @@
 
     ; font-0 = \ lucy\ tewi:scale=2;1
     font-0 = Noto Sans:size=10:antialias=true:style=Regular;2
-    font-1 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Solid;2
-    font-2 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Regular;2
-    font-3 = Font\ Awesome\ 5\ Free:size=10:antialias=true:style=Solid;2
+    font-1 = Font\ Awesome\ 6\ Brands:size=10:antialias=true:style=Solid;2
+    font-2 = Font\ Awesome\ 6\ Brands:size=10:antialias=true:style=Regular;2
+    font-3 = Font\ Awesome\ 6\ Free:size=10:antialias=true:style=Solid;2
     font-4 = Lemon:size=12;1
 
     modules-left = i3
@@ -115,14 +115,14 @@
 
     ; font-0 = \ lucy\ tewi:scale=2;1
     font-0 = Noto Sans:size=10:antialias=true:style=Regular;2
-    font-1 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Solid;2
-    font-2 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Regular;2
-    font-3 = Font\ Awesome\ 5\ Free:size=10:antialias=true:style=Solid;2
+    font-1 = Font\ Awesome\ 6\ Brands:size=10:antialias=true:style=Solid;2
+    font-2 = Font\ Awesome\ 6\ Brands:size=10:antialias=true:style=Regular;2
+    font-3 = Font\ Awesome\ 6\ Free:size=10:antialias=true:style=Solid;2
     font-4 = Lemon:size=12;1
 
     modules-left = i3
     modules-center = date
-;    modules-right = pomodoro
+    modules-right = pulseaudio-control
 
     tray-position= right
     tray-transparent = false
@@ -154,9 +154,9 @@
     module-margin-right = 1
 
     font-0 = Noto Sans:size=10:antialias=true:style=Regular;2
-    font-1 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Solid;2
-    font-2 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Regular;2
-    font-3 = Font\ Awesome\ 5\ Free:size=10:antialias=true:style=Solid;2
+    font-1 = Font\ Awesome\ 6\ Brands:size=10:antialias=true:style=Solid;2
+    font-2 = Font\ Awesome\ 6\ Brands:size=10:antialias=true:style=Regular;2
+    font-3 = Font\ Awesome\ 6\ Free:size=10:antialias=true:style=Solid;2
     font-4 = Lemon:size=12;1
 
     modules-left = i3 system-nvidia-smi
@@ -188,9 +188,9 @@
 
     ; font-0 = \ lucy\ tewi:scale=2;1
     font-0 = Noto Sans:size=10:antialias=true:style=Regular;2
-    font-1 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Solid;2
-    font-2 = Font\ Awesome\ 5\ Brands:size=10:antialias=true:style=Regular;2
-    font-3 = Font\ Awesome\ 5\ Free:size=10:antialias=true:style=Solid;2
+    font-1 = Font\ Awesome\ 6\ Brands:size=10:antialias=true:style=Solid;2
+    font-2 = Font\ Awesome\ 6\ Brands:size=10:antialias=true:style=Regular;2
+    font-3 = Font\ Awesome\ 6\ Free:size=10:antialias=true:style=Solid;2
     font-4 = Lemon:size=12;1
 
     modules-left = i3
@@ -497,4 +497,21 @@ label = %output%
 label-padding = 1
 interval = .25
 
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+format-underline = ${colors.cyan}
+label-padding = 2
+label-foreground = ${colors.foreground}
+
+# Icons mixed from Font Awesome 6 and Material Icons
+# You can copy-paste your options for each possible action, which is more
+# trouble-free but repetitive, or apply only the relevant ones (for example
+# --sink-blacklist is only needed for next-sink).
+exec = pulseaudio-control --icons-volume " , " --icon-muted " "  --node-nickname "alsa_output.pci-0000_07_00.1.hdmi-stereo-extra1: 🔈 Speakers" --node-nickname "alsa_output.usb-FiiO_DigiHug_USB_Audio-01.iec958-stereo: 🎧 Headphones" listen
+click-right = exec pavucontrol &
+click-left = pulseaudio-control togmute
+click-middle = pulseaudio-control --node-blacklist "alsa_output.pci-0000_09_00.4.iec958-stereo" next-node
+scroll-up = pulseaudio-control --volume-max 100 up
+scroll-down = pulseaudio-control --volume-max 100 down
 ; vim:ft=dosini

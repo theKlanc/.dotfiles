@@ -11,3 +11,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export XDG_DATA_HOME=$HOME/.local/share
 
 export QSYS_ROOTDIR="/home/klanc/.cache/yay/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/20.1/quartus/sopc_builder/bin"
+export ZEPHYR_TOOLCHAIN_VARIANT=zephyr
+export ZEPHYR_SDK_INSTALL_DIR=/opt/zephyr-sdk
+export PATH=~/.local/bin:"$PATH"
+export CMAKE_PREFIX_PATH=/opt/zephyr-sdk/cmake/
+export PICO_SDK_PATH=/usr/share/pico-sdk/
+export FREERTOS_KERNEL_PATH=/opt/FreeRTOS-Kernel/

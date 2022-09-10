@@ -107,5 +107,10 @@ date +%s > /tmp/zshPids/$$/lastTime
 s(){
   /usr/bin/ssh -t "$@" "tmux a -t $USER || tmux new -s $USER";
 }
+
+#sleep 2 && pkill starship &
 eval "$(starship init zsh)"
 source /etc/profile.d/devkit-env.sh
+
+
+source /home/klanc/.config/broot/launcher/bash/br

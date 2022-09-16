@@ -1,0 +1,16 @@
+{
+  "": ["google-chrome-stable"],
+  "": ["alacritty"],
+  "": ["qtcreator"],
+  "": ["alacritty"],
+  "": ["alacritty","-e","vim"],
+  "": ["multimc"],
+  "": ["steam-runtime"],
+  "": ["streamlink-twitch-gui"],
+  "": ["telegram-desktop"],
+  "": ["alacritty"],
+  "": ["virt-manager"],
+  "": ["launchChromium2.sh"],
+  "": ["cura"],
+  "": ["thunderbird"]
+}
